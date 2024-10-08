@@ -1,0 +1,40 @@
+# import the functions and variables.
+source "${INSTALLER}/scripts/util_functions.sh"
+
+# device codename / model detection, better put your device's codename / model for checking it
+# the "|" works as a separator.
+supportedDeviceCodenameList="surya|karna"
+
+# to check build id and abort if the id is older.
+checkBuildID buildIDPlacebo
+
+# now the real functions start!
+consolePrint "########################################################################"
+consolePrint "   _  _     _____          _    _ _" 
+consolePrint " _| || |_  |_   _|__ _   _| | _(_) | ____ _ "
+consolePrint "|_  ..  _|   | |/ __| | | | |/ / | |/ / _  |"
+consolePrint "|_      _|   | |\__ \ |_| |   <| |   < (_| |"
+consolePrint "  |_||_|     |_||___/\__,_|_|\_\_|_|\_\__,_|"
+consolePrint ""
+consolePrint "########################################################################"
+getprop ro.product.system.device | grep -qE "${supportedDeviceCodenameList}" || abort "This build is made for ${supportedDeviceCodenameList} not for your device."
+unmountPartitions && consolePrint "Successfully unmounted partitions!" || abort "Failed to unmount partitions, please try again after a reboot."
+consolePrint "Tsukika - Eternal Bless for XYZ | Built by XYZ"
+[ "$(acpi)" -le "25" ] && abort "Please atleast charge your device to 30% to continue the installation"
+# implement custom actions here
+consolePrint "                                              "
+consolePrint "              ******       ******"
+consolePrint "            **********   **********"
+consolePrint "          ************* *************"
+consolePrint "         *****************************"
+consolePrint "         *****************************"
+consolePrint "         *****************************"
+consolePrint "          ***************************"
+consolePrint "            ***********************"
+consolePrint "              *******************"
+consolePrint "                ***************"
+consolePrint "                  ***********"
+consolePrint "                    *******"
+consolePrint "                      ***"
+consolePrint "                       *"
+consolePrint "Thank you dear user for considering my project"

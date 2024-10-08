@@ -1,0 +1,86 @@
+#
+# Copyright (C) 2025 愛子あゆみ <ayumi.aiko@outlook.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+name: "Tsukika's Actions"
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      update_dependencies:
+        description: "Do you want to Update dependencies?"
+        required: true
+        default: "Update"
+        type: choice
+        options:
+          - Update
+          - Skip
+      updateSystemBinaries:
+        description: "Do you want to update system packages before running?"
+        required: true
+        default: "Update"
+        type: choice
+        options:
+          - Update
+          - Skip
+      installJava:
+        description: "Do you want to install java for this operation?"
+        required: true
+        default: "Skip"
+        type: choice
+        options:
+          - Install
+          - Skip
+
+permissions:
+  contents: write
+
+jobs:
+  tsukika:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Update Binaries
+        run: |
+        if: ${{ github.event.inputs.updateSystemBinaries == 'Update' }}
+          sudo apt update -y && sudo apt upgrade -y
+          sudo apt install aria2 curl -y
+
+      - name: Set up JDK 11
+        if: ${{ github.event.inputs.installJava == 'Install' }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Configure Git Identity
+        if: ${{ github.event.inputs.update_dependencies == 'Update' }}
+        run: |
+          git config --global user.name "愛子あゆみ"
+          git config --global user.email "aiko.bot@nekomimi.dev"
+
+      - name: Download and Push Dependencies
+        if: ${{ github.event.inputs.update_dependencies == 'Update' }}
+        run: |
+          chmod +x ./src/misc/workflow_scripts/tsukika.sh
+          ./src/misc/workflow_scripts/tsukika.sh --update-dependencies

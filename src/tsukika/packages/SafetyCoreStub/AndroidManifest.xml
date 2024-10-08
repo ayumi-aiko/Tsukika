@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:compileSdkVersion="34"
+    android:compileSdkVersionCodename="14"
+    package="com.google.android.safetycore"
+    platformBuildVersionCode="34"
+    platformBuildVersionName="14">
+    <permission
+        android:name="com.google.android.safetycore.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature"/>
+    <uses-permission
+        android:name="com.google.android.safetycore.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:title="月華 - Android SafetyCore Stub"
+        android:extractNativeLibs="false"/>
+</manifest>

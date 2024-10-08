@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OnOTAInfo>
+    <RomName>Tsukika</RomName>
+    <VersionName>Eternal Bliss</VersionName>
+    <BuildNumber type="integer">20250602</BuildNumber>
+    <DownloadURL>https://google.com</DownloadURL>
+    <AndroidVer>15</AndroidVer>
+    <OneUIVer>7.0</OneUIVer>
+    <CheckMD5>5df3e06f9ecd48e78544ed2a6ba5bc1b</CheckMD5>
+    <FileSize type="long">480000000</FileSize>
+    <WebsiteURL>https://forum.xda-developers.com/apps/magisk/dev-magisk-canary-channel-bleeding-edge-t3839337</WebsiteURL>
+    <ChangelogHeader>https://google.com</ChangelogHeader>
+    <ChangelogURL>https://google.com</ChangelogURL>
+</OnOTAInfo>
