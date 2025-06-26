@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+  	<title>Tsukika (月華)</title>
+  	<script defer src="src/scripts/index.js"></script>
+  	<link rel="stylesheet" href="src/style/css/common.stylesheet.css" />
+</head>
+<body>
+	<div class="hamburger-menu" onclick="toggleMenu()">
+    	<div></div><div></div><div></div>
+  	</div>
+  	<nav id="sideMenu" class="side-menu">
+    	<a href="supporteddevices.html">Supported Devices</a>
+    	<a href="usedUtils.html">Used Utilities</a>
+    	<a href="contributors.html">Contributors</a>
+    	<a href="https://github.com/ayumi-aiko/Tsukika">Source Code</a>
+  	</nav>
+  	<main class="content">
+    	<h1>
+      		<span style="font-family: 'GoogleSans';">Tsukika (月華),</span>
+      		<span style="font-family: 'SanFranciscoProBold';">A work-in-progress custom firmware solution for samsung devices</span>
+      		<span id="random-emojis" class="sparkle"></span>
+    	</h1>
+		<span id="random-message" style="font-family: 'GoogleSans';"></span>
+  	</main>
+	<script>
+    	const emojis = [
+      		'<span class="sparkle">🌸</span>',
+      		'<span class="sparkle">✨</span>',
+      		'<span class="sparkle">🥰</span>',
+      		'<span class="sparkle">🌟</span>'
+    	];
+		const quotes = [
+			"Some days I amaze myself. Other days, I put my keys in the fridge.",
+			"Adulthood is saying 'It is what it is' while your soul dies.",
+			"Growth is realizing 8 hours of sleep hits harder than revenge.",
+			"I’m doing my best, even if my best looks like barely holding it together.",
+			"Healing isn’t always pretty — sometimes it’s naps, silence, and saying no.",
+			"Not everything has to be productive. Existing is enough today.",
+			"You’re not behind in life. You’re just on your own timeline.",
+			"Your future self is quietly cheering you on. Keep going."
+		];
+    	document.addEventListener("DOMContentLoaded", () => {
+      		const randEmoMsgElement = document.getElementById("random-emojis");
+			const randQuoMsgElement = document.getElementById("random-message");
+      		const randomEmoIndex = Math.floor(Math.random() * emojis.length);
+			const randomQuoIndex = Math.floor(Math.random() * quotes.length);
+      		randEmoMsgElement.innerHTML = emojis[randomEmoIndex];
+			randQuoMsgElement.innerHTML = quotes[randomQuoIndex];
+    	});
+  	</script>
+</body>
+</html>
